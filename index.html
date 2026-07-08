@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCEND — Drop 004</title>
+<meta name="description" content="ASCEND is a drop-culture footwear, apparel and accessories store. New releases every Friday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">ASC<span>END</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="shop.html?cat=footwear">Footwear</a></li>
+      <li><a href="shop.html?cat=apparel">Apparel</a></li>
+      <li><a href="shop.html?cat=accessories">Accessories</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="icon-btn" href="shop.html" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </a>
+      <a class="icon-btn" href="cart.html" aria-label="Cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1600&auto=format&fit=crop">
+      <source src="https://assets.mixkit.co/videos/4893/4893-360.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap hero-content">
+    <div class="hero-top">
+      <div class="eyebrow">Drop 004 / Restock Friday</div>
+    </div>
+    <h1 class="hero-title">Built for<br>the next <em>move</em></h1>
+    <p class="hero-sub">Footwear, outerwear and accessories designed in-house, produced in small batches, and gone the moment the timer hits zero.</p>
+    <div class="hero-actions">
+      <a href="shop.html" class="btn btn-primary">Shop the drop</a>
+      <div class="drop-timer" data-countdown>
+        <div class="seg"><b data-d>00</b><span>Days</span></div>
+        <span class="colon">:</span>
+        <div class="seg"><b data-h>00</b><span>Hrs</span></div>
+        <span class="colon">:</span>
+        <div class="seg"><b data-m>00</b><span>Min</span></div>
+        <span class="colon">:</span>
+        <div class="seg"><b data-s>00</b><span>Sec</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Free shipping over ₹4,000</span>
+    <span>New drop every Friday</span>
+    <span>Small batch production</span>
+    <span>Easy 30-day returns</span>
+    <span>Free shipping over ₹4,000</span>
+    <span>New drop every Friday</span>
+    <span>Small batch production</span>
+    <span>Easy 30-day returns</span>
+  </div>
+</div>
+
+<section id="categories">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <h2>Shop by category</h2>
+      <p>Three lines, one standard. Each piece is designed to move between the street and everywhere after it.</p>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card fade-up" href="shop.html?cat=footwear">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=900&auto=format&fit=crop" alt="Footwear" loading="lazy">
+        <div class="cat-label"><div class="eyebrow">01 / Footwear</div><h3>Trainers</h3></div>
+      </a>
+      <a class="cat-card fade-up" href="shop.html?cat=apparel">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop" alt="Apparel" loading="lazy">
+        <div class="cat-label"><div class="eyebrow">02 / Apparel</div><h3>Outerwear</h3></div>
+      </a>
+      <a class="cat-card fade-up" href="shop.html?cat=accessories">
+        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=900&auto=format&fit=crop" alt="Accessories" loading="lazy">
+        <div class="cat-label"><div class="eyebrow">03 / Accessories</div><h3>Carry &amp; wear</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="featured" style="background:var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <h2>Fresh off the line</h2>
+      <p>The eight pieces moving fastest this week — updated live as stock changes.</p>
+    </div>
+    <div class="product-grid" id="featured-grid"></div>
+    <div style="text-align:center; margin-top:44px;">
+      <a href="shop.html" class="btn btn-outline">View full catalogue</a>
+    </div>
+  </div>
+</section>
+
+<section class="split">
+  <div class="split-media">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop">
+      <source src="https://assets.mixkit.co/videos/744/744-360.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="split-copy fade-up">
+    <div class="eyebrow">The process</div>
+    <h2>Small batches. Zero backstock.</h2>
+    <p>Every drop is produced in a limited run against real demand — nothing sits in a warehouse, nothing gets marked down six months later. When it's gone, it's gone until the next cycle.</p>
+    <a href="shop.html" class="btn btn-signal">See what's left</a>
+    <div class="stat-row">
+      <div class="stat"><b>04</b><span>Drops shipped</span></div>
+      <div class="stat"><b>128</b><span>Cities reached</span></div>
+      <div class="stat"><b>4.7</b><span>Avg. rating</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <h2>From the community</h2>
+      <p>Real fit and quality notes from people who copped the last drop.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p>"Runs true to size and the cobalt colourway looks even better in person. Sold out in an hour when I checked back."</p>
+        <div class="review-who">
+          <div class="review-avatar"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=200&auto=format&fit=crop" alt=""></div>
+          <div><b>Rhea K.</b><span>Verified buyer</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p>"The Fleet Hoodie is genuinely heavyweight, not the thin stuff most drops ship. Worth setting an alarm for restock day."</p>
+        <div class="review-who">
+          <div class="review-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt=""></div>
+          <div><b>Arjun M.</b><span>Verified buyer</span></div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★☆</div>
+        <p>"Checkout was fast and the countdown timer actually creates urgency that's justified — items really do sell out."</p>
+        <div class="review-who">
+          <div class="review-avatar"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=200&auto=format&fit=crop" alt=""></div>
+          <div><b>Naina S.</b><span>Verified buyer</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter fade-up">
+  <h2>Get drop alerts</h2>
+  <p>Join the list and get a 10-minute head start before each Friday drop goes public.</p>
+  <form class="news-form" id="newsletter-form">
+    <input type="email" placeholder="you@email.com" required>
+    <button class="btn btn-outline" type="submit">Notify me</button>
+  </form>
+  <div class="form-msg" id="news-msg"></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">ASC<span>END</span></a>
+        <p>A drop-culture storefront for footwear, apparel and accessories. Designed in-house, produced in small batches.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="shop.html?cat=footwear">Footwear</a>
+        <a href="shop.html?cat=apparel">Apparel</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="#">Shipping &amp; returns</a>
+        <a href="#">Size guide</a>
+        <a href="#">Track an order</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ASCEND. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById("featured-grid").innerHTML =
+    PRODUCTS.slice(0,8).map(productCardHTML).join("");
+  mountQuickAdd();
+  mountCountdown(document.querySelector("[data-countdown]"));
+
+  document.getElementById("newsletter-form").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    document.getElementById("news-msg").textContent = "✓ You're on the list — watch your inbox Friday morning.";
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

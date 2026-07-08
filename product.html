@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — ASCEND</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">ASC<span>END</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="shop.html?cat=footwear">Footwear</a></li>
+      <li><a href="shop.html?cat=apparel">Apparel</a></li>
+      <li><a href="shop.html?cat=accessories">Accessories</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="icon-btn" href="shop.html" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </a>
+      <a class="icon-btn" href="cart.html" aria-label="Cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="shop.html">Shop</a><span>/</span><span id="bc-name">Product</span></div>
+
+  <section id="pd-root"></section>
+
+  <section id="related-wrap" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="section-head">
+      <h2>You might also like</h2>
+      <p>More from the same category.</p>
+    </div>
+    <div class="product-grid" id="related-grid"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">ASC<span>END</span></a>
+        <p>A drop-culture storefront for footwear, apparel and accessories. Designed in-house, produced in small batches.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="shop.html?cat=footwear">Footwear</a>
+        <a href="shop.html?cat=apparel">Apparel</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="#">Shipping &amp; returns</a>
+        <a href="#">Size guide</a>
+        <a href="#">Track an order</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ASCEND. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id") || PRODUCTS[0].id;
+  const p = getProduct(id) || PRODUCTS[0];
+  document.title = p.name + " — ASCEND";
+  document.getElementById("bc-name").textContent = p.name;
+
+  let activeImg = p.gallery[0];
+  let activeSize = p.sizes ? p.sizes[Math.floor(p.sizes.length/2)] : null;
+  let activeColor = p.colors[0];
+  let qty = 1;
+
+  function tagClass(){ return p.tag === "SALE" ? "sale" : (p.tag === "NEW DROP" ? "new" : ""); }
+
+  function renderPD(){
+    document.getElementById("pd-root").innerHTML = `
+      <div class="product-detail">
+        <div>
+          <div class="pd-gallery-main"><img src="${activeImg}" alt="${p.name}" id="pd-main-img"></div>
+          <div class="pd-thumbs">
+            ${p.gallery.map((g,i)=>`<button class="pd-thumb ${g===activeImg?'active':''}" data-img="${g}"><img src="${g}" alt=""></button>`).join("")}
+          </div>
+        </div>
+        <div>
+          ${p.tag ? `<span class="card-tag ${tagClass()} pd-tag">${p.tag}</span>` : ""}
+          <h1 class="pd-name">${p.name}</h1>
+          <div class="pd-meta">
+            <div class="stars">★★★★★ <b>${p.rating}</b> (${p.reviews} reviews)</div>
+          </div>
+          <div class="pd-price">${money(p.price)} ${p.compareAt ? `<span class="was">${money(p.compareAt)}</span>` : ""}</div>
+          <p class="pd-desc" style="margin-top:18px;">${p.desc}</p>
+
+          <div class="opt-block">
+            <div class="opt-label"><span>Colour</span></div>
+            <div class="swatches">
+              ${p.colors.map(c=>`<span class="swatch ${c===activeColor?'active':''}" style="background:${c}" data-color="${c}"></span>`).join("")}
+            </div>
+          </div>
+
+          ${p.sizes ? `
+          <div class="opt-block">
+            <div class="opt-label"><span>Size</span><a href="#" style="color:var(--cobalt); text-decoration:underline;">Size guide</a></div>
+            <div class="size-grid">
+              ${p.sizes.map(s=>`<button class="size-box ${s===activeSize?'active':''}" data-size="${s}">${s}</button>`).join("")}
+            </div>
+          </div>` : ""}
+
+          <div class="qty-row">
+            <div class="qty-stepper">
+              <button id="qty-dec">−</button><span id="qty-val">${qty}</span><button id="qty-inc">+</button>
+            </div>
+            ${p.stock <= 8 ? `<div class="stock-flag">Only ${p.stock} left</div>` : `<div class="stock-flag" style="color:var(--ok);">In stock</div>`}
+          </div>
+
+          <div class="pd-actions">
+            <button class="btn btn-primary btn-block" id="add-cart-btn">Add to bag — ${money(p.price*qty)}</button>
+            <button class="icon-btn" style="width:48px;height:48px;" id="pd-wish" aria-label="Save">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+          </div>
+
+          <div class="pd-info-list">
+            <div class="info-row" data-info="ship"><span>Shipping &amp; returns</span><span>+</span></div>
+            <div class="info-panel">Free shipping over ₹4,000. Delivered in 3–6 business days. Returns accepted within 30 days, unworn with tags.</div>
+            <div class="info-row" data-info="care"><span>Materials &amp; care</span><span>+</span></div>
+            <div class="info-panel">See the product label for full material composition. Spot clean where possible; avoid direct heat.</div>
+            <div class="info-row" data-info="fit"><span>Fit notes</span><span>+</span></div>
+            <div class="info-panel">This style runs true to size. If you're between sizes, we recommend sizing up.</div>
+          </div>
+        </div>
+      </div>
+    `;
+    wirePD();
+  }
+
+  function wirePD(){
+    document.querySelectorAll(".pd-thumb").forEach(t=>{
+      t.addEventListener("click", ()=>{ activeImg = t.dataset.img; renderPD(); });
+    });
+    document.querySelectorAll(".swatch").forEach(s=>{
+      s.addEventListener("click", ()=>{ activeColor = s.dataset.color; renderPD(); });
+    });
+    document.querySelectorAll(".size-box").forEach(s=>{
+      s.addEventListener("click", ()=>{ activeSize = s.dataset.size; renderPD(); });
+    });
+    document.getElementById("qty-inc").addEventListener("click", ()=>{ qty++; renderPD(); });
+    document.getElementById("qty-dec").addEventListener("click", ()=>{ if(qty>1) qty--; renderPD(); });
+    document.getElementById("add-cart-btn").addEventListener("click", ()=>{
+      Cart.add(p.id, { size: activeSize, color: activeColor, qty });
+      showToast(p);
+    });
+    document.getElementById("pd-wish").addEventListener("click", (e)=> e.currentTarget.classList.toggle("active"));
+    document.querySelectorAll(".info-row").forEach(r=>{
+      r.addEventListener("click", ()=> r.classList.toggle("open"));
+    });
+  }
+
+  renderPD();
+
+  const related = PRODUCTS.filter(x=>x.category===p.category && x.id!==p.id).slice(0,4);
+  document.getElementById("related-grid").innerHTML = related.map(productCardHTML).join("");
+  mountQuickAdd();
+</script>
+</body>
+</html>
